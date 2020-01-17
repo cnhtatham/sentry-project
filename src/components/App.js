@@ -1,4 +1,5 @@
 import React from "react"
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom"
 import "./App.css"
 import Sidebar from "./Sidebar/Sidebar.js"
 import Project from "./Project/Project.js"
@@ -82,14 +83,16 @@ class App extends React.Component {
     const { d } = this.state /* always deconstruct the state object */
 
     return (
-      <div className="app">
+      <Switch>
+      //<div className="app">
         <Sidebar />
         <div className="main-content-wrapper">
           <SubHeader text="Century" />
           <MainContainer d={d} />
           {/* d is now passed as a prop to Main Container so that it isnt accessing a global variable */}
         </div>
-      </div>
+      //</div>
+      </Switch>
     )
   }
 }
