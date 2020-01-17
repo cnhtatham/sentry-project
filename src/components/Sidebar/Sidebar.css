@@ -1,0 +1,73 @@
+.sidebar {
+  height: 50px; /* Full-height: remove this if you want "auto" height */
+  width: 100%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0px;
+  text-align: left;
+
+}
+
+/* The navigation menu links */
+.sidebar-item {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 100%;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar-item:hover {
+  color: #f1f1f1;
+  background-color: #212121;
+}
+
+.sidebar-item-text {
+  margin-left: 10px;
+  display: none;
+}
+
+.sidebar-item-icon {
+  height: 50px;
+}
+.sidebar-item-icon svg{
+  margin-top: 30%
+}
+
+.sidebar-item-active::before {
+  content:"";
+  background-color: limegreen;
+  border-radius: 0px 3px 3px 0px;
+  display: block;
+  width: 5px;
+  position: absolute;
+  left: 0px;
+  height: 40px
+
+
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    height: 100%;
+    width: 220px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .sidebar-item-text {
+    display: inline;
+  }
+
+  .sidebar-item {
+    height: 40px
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaPython, FaRegStar, FaStar } from 'react-icons/fa'
 import { DiJavascript } from 'react-icons/di'
 
-let projectIcons = {
+const projectIcons = {
   'python' : <FaPython />,
   'javascript' : <DiJavascript />
 }

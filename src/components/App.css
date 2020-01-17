@@ -2,8 +2,9 @@
   text-align: center;
 }
 
-.sidebar {
-  max-width: 30%
+.main-content-wrapper {
+  margin-left: 0px;
+  margin-top: 50px;
 }
 
 #main-container {
@@ -39,8 +40,14 @@
 }
 
 @media screen and (min-width: 768px) {
+  .main-content-wrapper {
+      margin-left: 220px;
+      margin-top: -20px;
+
+  }
+
   .project-wrapper {
-    width: 50%
+    width: 50%;
   }
 }
 

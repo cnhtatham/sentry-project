@@ -32,6 +32,47 @@ let d = [
 ]
 
 
+
+let x = [
+  {
+    'activity' : {
+      'target' : 'project',
+      'targetId' : 'amp-api',
+      'action' : 'created'
+    },
+    'datetime' : new Date('January 10, 2019'),
+    'user' : 'root',
+  },
+  {
+    'activity' : {
+      'target' : 'project',
+      'targetId' : 'jones',
+      'action' : 'created'
+    },
+    'user' : 'root',
+    'datetime' : new Date('February 28, 2019'),
+  },
+  {
+    'activity' : {
+      'target' : 'project',
+      'targetId' : 'silverback',
+      'action' : 'created'
+    },
+    'datetime' : new Date('January 9, 2019'),
+    'user' : 'root',
+  },
+  {
+    'activity' : {
+      'target' : 'project',
+      'targetId' : 'site-monitor',
+      'action' : 'created'
+    },
+    'datetime' : new Date('January 30, 2019'),
+    'user' : 'root',
+  }
+]
+
+
 class SubHeader extends React.Component {
   render () {
     return (
@@ -59,8 +100,10 @@ class App extends React.Component {
   return (
     <div className="app">
       <Sidebar />
-      <SubHeader text='Test Title'/>
+      <div className="main-content-wrapper">
+      <SubHeader text='Century'/>
       <MainContainer />
+      </div>
     </div>
   );
 }
