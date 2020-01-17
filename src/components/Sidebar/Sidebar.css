@@ -10,6 +10,11 @@
   padding-top: 0px;
   text-align: left;
 
+  /* Ben */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 /* The navigation menu links */
@@ -22,12 +27,18 @@
   justify-content: center;
   align-items: baseline;
   height: 100%;
+
+  /* Ben */
+  padding: 5px 10px;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidebar-item:hover {
   color: #f1f1f1;
   background-color: #212121;
+
+  /* Ben */
+  cursor: pointer;
 }
 
 .sidebar-item-text {
@@ -38,21 +49,19 @@
 .sidebar-item-icon {
   height: 50px;
 }
-.sidebar-item-icon svg{
-  margin-top: 30%
+.sidebar-item-icon svg {
+  margin-top: 30%;
 }
 
 .sidebar-item-active::before {
-  content:"";
+  content: "";
   background-color: limegreen;
   border-radius: 0px 3px 3px 0px;
   display: block;
   width: 5px;
   position: absolute;
   left: 0px;
-  height: 40px
-
-
+  height: 40px;
 }
 
 @media screen and (min-width: 768px) {
@@ -60,7 +69,12 @@
     height: 100%;
     width: 220px;
     padding-top: 20px;
-    text-align: center;
+    /* text-align: center; */
+
+    /* Ben */
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
   }
 
   .sidebar-item-text {
@@ -68,6 +82,10 @@
   }
 
   .sidebar-item {
-    height: 40px
+    height: 50px;
+
+    /* I dont think  you need to center it at desktop: I would add a left padding to line up the icons */
+    padding-left: 25px;
+    justify-content: unset;
   }
 }
