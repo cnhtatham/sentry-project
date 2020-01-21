@@ -1,0 +1,43 @@
+.project-wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 5px 0px
+}
+
+.project-header {
+  margin: 0 auto;
+  width: 90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+
+.project-name {
+  position: relative;
+  width:80%;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .project-wrapper {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .project-wrapper {
+    width: 33%
+  }
+}
+
+
+
+.project {
+  display: inline-block;
+  width: 95%;
+  border: solid;
+  border-width: 1px;
+
+}

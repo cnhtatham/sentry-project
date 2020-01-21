@@ -1,16 +1,14 @@
 import React from "react"
-import { BrowserRouter, NavLink } from "react-router-dom"
+import { NavLink }  from "react-router-dom"
 import { GiBrutalHelm, GiShuriken } from "react-icons/gi"
 import "./Sidebar.css"
 
 // Again ordering by hierarchy
 const Sidebar = () => (
-  <BrowserRouter>
     <nav className="sidebar">
       <SidebarItem menuItem="Projects" icon={<GiBrutalHelm />} to="/projects" />
       <SidebarItem menuItem="Activities" icon={<GiShuriken />} to="/activities"/>
     </nav>
-  </BrowserRouter>
 )
 
 

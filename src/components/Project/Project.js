@@ -1,6 +1,7 @@
 import React from "react"
 import { FaPython, FaRegStar, FaStar } from "react-icons/fa"
 import { DiJavascript } from "react-icons/di"
+import "./Project.css"
 
 let projectIcons = {
   python: <FaPython />,

@@ -83,20 +83,26 @@ class App extends React.Component {
     const { d } = this.state /* always deconstruct the state object */
 
     return (
-      <Switch>
       <div className="app">
         <Sidebar />
         <div className="main-content-wrapper">
-        <Route path="/">
-
-          <SubHeader text="Century" />
-          <MainContainer d={d} />
-          {/* d is now passed as a prop to Main Container so that it isnt accessing a global variable */}
-
+        <Switch>
+        <Route path='/activities'>
+          <SubHeader text="Activities" />
         </Route>
-          </div>
+
+        <Route path='/projects'>
+          <SubHeader text="Projects" />
+          <MainContainer d={d} />
+        </Route>
+
+        <Route path="/">"
+          <SubHeader text="Century" />
+        </Route>
+
+        </Switch>
+        </div>
       </div>
-      </Switch>
     )
   }
 }

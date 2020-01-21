@@ -17,7 +17,7 @@
   padding: 5px;
 }
 
-.project-wrapper {
+/* .project-wrapper {
   text-align: center;
   width: 100%;
   margin: 5px 0px
@@ -37,7 +37,7 @@
   position: relative;
   width:80%;
   text-align: left;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .main-content-wrapper {
@@ -46,12 +46,12 @@
 
   }
 
-  .project-wrapper {
+  /* .project-wrapper {
     width: 50%;
-  }
+  } */
 }
 
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
   .project-wrapper {
     width: 33%
   }
@@ -65,4 +65,4 @@
   border: solid;
   border-width: 1px;
 
-}
+} */
