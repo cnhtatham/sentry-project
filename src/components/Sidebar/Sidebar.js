@@ -1,45 +1,31 @@
 import React from "react"
+import { BrowserRouter, NavLink } from "react-router-dom"
 import { GiBrutalHelm, GiShuriken } from "react-icons/gi"
 import "./Sidebar.css"
 
 // Again ordering by hierarchy
 const Sidebar = () => (
-  <div className="sidebar">
-    <SidebarItem menuItem="Projects" icon={<GiBrutalHelm />} />
-    <SidebarItem menuItem="Activity" icon={<GiShuriken />} />
-  </div>
+  <BrowserRouter>
+    <nav className="sidebar">
+      <SidebarItem menuItem="Projects" icon={<GiBrutalHelm />} to="/projects" />
+      <SidebarItem menuItem="Activities" icon={<GiShuriken />} to="/activities"/>
+    </nav>
+  </BrowserRouter>
 )
 
-class SidebarItem extends React.Component {
-  constructor(props) {
-    super(props)
-    this.toggleActive = this.toggleActive.bind(this)
-    this.state = {
-      active: false
-    }
-  }
 
-  // If you were to make this an arrow function then you could remove the bind from the contstructor
-  toggleActive() {
-    var options = document.getElementsByClassName("sidebar-item")
-    console.log(options)
-    Array.prototype.forEach.call(options, el => {
-      el.classList.remove("sidebar-item-active")
-    })
-  }
 
-  render() {
-    return (
-      <div
-        className={"sidebar-item"}
-        id={this.props.menuItem.toLowerCase() + "-menu-item"}
-        onClick={this.toggleActive}
-      >
-        <span className="sidebar-item-icon">{this.props.icon}</span>
-        <span className="sidebar-item-text">{this.props.menuItem}</span>
-      </div>
-    )
-  }
-}
+const SidebarItem = ( d ) => (
+  <NavLink
+    className="sidebar-item"
+    id={d.menuItem.toLowerCase() + "-menu-item"}
+    to={d.to}
+    activeClassName="navbar-active" >
+      <span className="sidebar-item-icon">{d.icon}</span>
+      <span className="sidebar-item-text">{d.menuItem}</span>
+  </NavLink>
+)
+
+
 
 export default Sidebar

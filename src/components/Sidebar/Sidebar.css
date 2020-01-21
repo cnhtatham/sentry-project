@@ -41,6 +41,11 @@
   cursor: pointer;
 }
 
+.navbar-active {
+  color: #f1f1f1;
+  background-color: #212121;
+}
+
 .sidebar-item-text {
   margin-left: 10px;
   display: none;

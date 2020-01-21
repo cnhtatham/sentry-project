@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import "./App.css"
 import Sidebar from "./Sidebar/Sidebar.js"
 import Project from "./Project/Project.js"
@@ -84,14 +84,18 @@ class App extends React.Component {
 
     return (
       <Switch>
-      //<div className="app">
+      <div className="app">
         <Sidebar />
         <div className="main-content-wrapper">
+        <Route path="/">
+
           <SubHeader text="Century" />
           <MainContainer d={d} />
           {/* d is now passed as a prop to Main Container so that it isnt accessing a global variable */}
-        </div>
-      //</div>
+
+        </Route>
+          </div>
+      </div>
       </Switch>
     )
   }
