@@ -1,8 +1,10 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom"
 import "./App.css"
+import { TiArrowSortedDown } from "react-icons/ti"
 import Sidebar from "./Sidebar/Sidebar.js"
-import Project from "./Project/Project.js"
+import ProjectContainer from "./Project/Project.js"
+import Activity from "./Activity/Activity.js"
 
 // Your data should ideally live within the state of the highest component that is an ancestor of all the components that need the data from state
 // In this case (d) it should be within a state in the Main Container component because no other components are using the data.
@@ -13,32 +15,6 @@ import Project from "./Project/Project.js"
 class App extends React.Component {
   // "state = " is just a newer way of declaring the state as opposed to creating a constructor
   state = {
-    d: [
-      {
-        name: "amp-api",
-        created: "2/1/2020",
-        type: "python",
-        bookmarked: false
-      },
-      {
-        name: "jones",
-        created: "2/1/2020",
-        type: "javascript",
-        bookmarked: false
-      },
-      {
-        name: "silverback",
-        created: "2/1/2020",
-        type: "python",
-        bookmarked: true
-      },
-      {
-        name: "site-monitor",
-        created: "2/1/2020",
-        type: "javascript",
-        bookmarked: false
-      }
-    ],
     x: [
       {
         activity: {
@@ -47,7 +23,7 @@ class App extends React.Component {
           action: "created"
         },
         datetime: new Date("January 10, 2019"),
-        user: "root"
+        user: "charlie"
       },
       {
         activity: {
@@ -55,7 +31,7 @@ class App extends React.Component {
           targetId: "jones",
           action: "created"
         },
-        user: "root",
+        user: "glenn",
         datetime: new Date("February 28, 2019")
       },
       {
@@ -80,143 +56,102 @@ class App extends React.Component {
   }
 
   render() {
-    const { d } = this.state /* always deconstruct the state object */
-
+ /* always deconstruct the state object */
+    const { x } = this.state
     return (
       <div className="app">
+
         <Sidebar />
+        <SubNavbar />
         <div className="main-content-wrapper">
-        <Switch>
-        <Route path='/activities'>
-          <SubHeader text="Activities" />
-        </Route>
+          <Switch>
 
-        <Route path='/projects'>
-          <SubHeader text="Projects" />
-          <MainContainer d={d} />
-        </Route>
+            <Route path='/activities'>
+              <SubHeader text="Activities" />
+              <ActivityContainer x={x}/>
+            </Route>
 
-        <Route path="/">"
-          <SubHeader text="Century" />
-        </Route>
+            <Route path='/projects'>
+              <SubHeader text="Projects" />
+              <ProjectContainer />
+            </Route>
 
-        </Switch>
+            <Route path="/">"
+              <SubHeader text="Century" />
+            </Route>
+
+          </Switch>
         </div>
       </div>
     )
   }
 }
 
-// *** MAIN CONTAINER *** //
-// Same rule applies to the main container regarding state
 
-// class MainContainer extends React.Component {
-//   render() {
-//     return <div id='main-container'>
-//       {d.map( (project, i) => (
-//         <Project project={project} key={i}/>
-//       ))}
-
-//     </div>
+// class ProjectContainer extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {projects : []}
 //   }
-// }
-
-const MainContainer = ({ d }) => (
-  <div id="main-container">
-    {d.map((project, i) => (
-      <Project project={project} key={i} />
-    ))}
-  </div>
-)
-
-// *** SUB HEADER *** //
-// There is no need for this to be a class component because it does not require its own state
-// Rule of thumb: always use functional components when you do not use a state
-// I've left your class component beneath for comparison
-
-// class SubHeader extends React.Component {
-//   render () {
+//
+//   componentDidMount() {
+//     axios.get('http://localhost:5000/get_projects')
+//       .then(res => {
+//         this.setState({projects : res.data.projects})
+//       })
+//   }
+//
+//
+//   render() {
 //     return (
-//       <div id='sub-header'>
-//         <h1> {this.props.text} </h1>
+//       <div className="main-container project-container">
+//         {console.log(this.state.projects)}
+//         {this.state.projects.map((project, i) => (
+//           <Project project={project} key={i} />
+//         ))}
 //       </div>
 //     )
 //   }
 // }
 
+// const ProjectContainer = ({ d }) => (
+//   <div className="main-container project-container">
+//     {d.map((project, i) => (
+//       <Project project={project} key={i} />
+//     ))}
+//   </div>
+// )
+
+const ActivityContainer = ({ x }) => (
+  <div className="main-container activity-container">
+    <ul className="activity-list">
+      {x.map((activity, i) => (
+        <Activity activity={activity} key={i} />
+      ))}
+    </ul>
+  </div>
+)
+
 const SubHeader = ({ text }) => (
   // text is deconstructed ^ so that you can just use it like a variable later
-  <div id="sub-header">
+  <div className="sub-header">
     <h1> {text} </h1>
   </div>
 )
 
+const SubNavbar = () => (
+  <div className="sub-navbar">
+    <div className="add-new-dropdown-wrapper">
+    <button className="add-new-button">
+      <span><strong>Add new... </strong></span>
+      <span><TiArrowSortedDown/></span>
+    </button>
+    <div className="add-new-dropdown">
+      <p className="dropdown-item">Project</p>
+      <p className="dropdown-item">User</p>
+    </div>
+    </div>
+  </div>
+)
+
 export default App
-
-// Data should live within the state of a component
-// This is because that is where it would be if you had fetched it from a database etc
-// let d = [
-//   {
-//     name: "amp-api",
-//     created: "2/1/2020",
-//     type: "python",
-//     bookmarked: false
-//   },
-//   {
-//     name: "jones",
-//     created: "2/1/2020",
-//     type: "javascript",
-//     bookmarked: false
-//   },
-//   {
-//     name: "silverback",
-//     created: "2/1/2020",
-//     type: "python",
-//     bookmarked: true
-//   },
-//   {
-//     name: "site-monitor",
-//     created: "2/1/2020",
-//     type: "javascript",
-//     bookmarked: false
-//   }
-// ]
-
-// let x = [
-//   {
-//     activity: {
-//       target: "project",
-//       targetId: "amp-api",
-//       action: "created"
-//     },
-//     datetime: new Date("January 10, 2019"),
-//     user: "root"
-//   },
-//   {
-//     activity: {
-//       target: "project",
-//       targetId: "jones",
-//       action: "created"
-//     },
-//     user: "root",
-//     datetime: new Date("February 28, 2019")
-//   },
-//   {
-//     activity: {
-//       target: "project",
-//       targetId: "silverback",
-//       action: "created"
-//     },
-//     datetime: new Date("January 9, 2019"),
-//     user: "root"
-//   },
-//   {
-//     activity: {
-//       target: "project",
-//       targetId: "site-monitor",
-//       action: "created"
-//     },
-//     datetime: new Date("January 30, 2019"),
-//     user: "root"
-//   }
-// ]
