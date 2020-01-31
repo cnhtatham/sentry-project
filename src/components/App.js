@@ -4,7 +4,8 @@ import "./App.css"
 import { TiArrowSortedDown } from "react-icons/ti"
 import Sidebar from "./Sidebar/Sidebar.js"
 import ProjectContainer from "./Project/Project.js"
-import Activity from "./Activity/Activity.js"
+import ActivityContainer from "./Activity/Activity.js"
+import CreateProjectContainer from "./Create/Project/CreateProject.js"
 
 // Your data should ideally live within the state of the highest component that is an ancestor of all the components that need the data from state
 // In this case (d) it should be within a state in the Main Container component because no other components are using the data.
@@ -14,50 +15,10 @@ import Activity from "./Activity/Activity.js"
 // Even better all the other components declared within this file should be refactored into their own files
 class App extends React.Component {
   // "state = " is just a newer way of declaring the state as opposed to creating a constructor
-  state = {
-    x: [
-      {
-        activity: {
-          target: "project",
-          targetId: "amp-api",
-          action: "created"
-        },
-        datetime: new Date("January 10, 2019"),
-        user: "charlie"
-      },
-      {
-        activity: {
-          target: "project",
-          targetId: "jones",
-          action: "created"
-        },
-        user: "glenn",
-        datetime: new Date("February 28, 2019")
-      },
-      {
-        activity: {
-          target: "project",
-          targetId: "silverback",
-          action: "created"
-        },
-        datetime: new Date("January 9, 2019"),
-        user: "root"
-      },
-      {
-        activity: {
-          target: "project",
-          targetId: "site-monitor",
-          action: "created"
-        },
-        datetime: new Date("January 30, 2019"),
-        user: "root"
-      }
-    ]
-  }
+  state = {}
 
   render() {
  /* always deconstruct the state object */
-    const { x } = this.state
     return (
       <div className="app">
 
@@ -68,7 +29,12 @@ class App extends React.Component {
 
             <Route path='/activities'>
               <SubHeader text="Activities" />
-              <ActivityContainer x={x}/>
+              <ActivityContainer />
+            </Route>
+
+            <Route path='/create/project'>
+              <SubHeader text="Create New Project" />
+              <CreateProjectContainer />
             </Route>
 
             <Route path='/projects'>
@@ -122,15 +88,15 @@ class App extends React.Component {
 //   </div>
 // )
 
-const ActivityContainer = ({ x }) => (
-  <div className="main-container activity-container">
-    <ul className="activity-list">
-      {x.map((activity, i) => (
-        <Activity activity={activity} key={i} />
-      ))}
-    </ul>
-  </div>
-)
+// const ActivityContainer = ({ x }) => (
+//   <div className="main-container activity-container">
+//     <ul className="activity-list">
+//       {x.map((activity, i) => (
+//         <Activity activity={activity} key={i} />
+//       ))}
+//     </ul>
+//   </div>
+// )
 
 const SubHeader = ({ text }) => (
   // text is deconstructed ^ so that you can just use it like a variable later
@@ -147,8 +113,8 @@ const SubNavbar = () => (
       <span><TiArrowSortedDown/></span>
     </button>
     <div className="add-new-dropdown">
-      <p className="dropdown-item">Project</p>
-      <p className="dropdown-item">User</p>
+      <a className="dropdown-item" href="/create/project">Project</a>
+      <a className="dropdown-item">User</a>
     </div>
     </div>
   </div>

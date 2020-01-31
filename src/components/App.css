@@ -3,14 +3,15 @@
 }
 
 .sub-navbar {
-  margin-left: 220px;
+  margin-left: 0px;
   text-align: left;
   padding-left: 1%;
-  padding-top: 3px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-bottom: black solid 1px;
   box-shadow: 0px 2px 2px lightgray;
+  margin-top: 50px;
+  font-size: 1em
 }
 
 .add-new-dropdown-wrapper {
@@ -18,8 +19,16 @@
   display: inline-block;
 }
 
+.add-new-dropdown-wrapper:focus {
+  outline: none
+}
+
+.add-new-button:focus {
+  outline: none
+}
+
 .add-new-button {
-  padding: 10px 15px;
+  padding: 5px 10px;
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -41,7 +50,7 @@
   box-shadow: 2px 2px 5px lightgray
 }
 
-.add-new-dropdown p {
+.add-new-dropdown a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -92,6 +101,25 @@
   .main-content-wrapper {
       margin-left: 220px;
       margin-top: -20px;
+
+  }
+  .sub-navbar {
+    margin-left: 220px;
+    margin-top: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .add-new-button {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px lightgray;
+    background-color: white;
 
   }
 }
